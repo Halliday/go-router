@@ -42,14 +42,21 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	path := strings.TrimPrefix(req.URL.Path, "/")
 
 	if path == "" {
-		var handler http.Handler
-		if r.Methods != nil {
-			handler = r.Methods[req.Method]
-		}
-		if handler != nil {
-			req.URL.Path = "/"
-			handler.ServeHTTP(resp, req)
-			return
+		if len(r.Methods) > 0 {
+			requestMethod := strings.ToUpper(req.Header.Get("Access-Control-Request-Method"))
+
+			var handler http.Handler
+			if req.Method == http.MethodOptions && requestMethod != "" {
+				resp.Header().Set("Access-Control-Allow-Methods", strings.Join(r.methods(), ", "))
+				handler = r.Methods[requestMethod]
+			} else {
+				handler = r.Methods[req.Method]
+			}
+			if handler != nil {
+				req.URL.Path = "/"
+				handler.ServeHTTP(resp, req)
+				return
+			}
 		}
 	} else {
 
@@ -103,17 +110,6 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	}
 
 	if path == "" && len(r.Methods) != 0 {
-		if req.Method == http.MethodOptions {
-			requestMethod := req.Header.Get("Access-Control-Request-Method")
-			if requestMethod != "" {
-				if r.Methods[requestMethod] == nil {
-					resp.Header().Set("Access-Control-Allow-Methods", strings.Join(r.methods(), ", "))
-					tools.ServeError(resp, e("method_not_allowed"))
-					return
-				}
-			}
-			return
-		}
 		tools.ServeError(resp, e("method_not_allowed"))
 		return
 	}
