@@ -60,6 +60,20 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 		}
 	} else {
 
+		if r.Paths != nil {
+			element, subpath := path, "/"
+			if i := strings.IndexByte(path, '/'); i != -1 {
+				element, subpath = path[:i], path[i:]
+			}
+
+			subhandler := r.Paths[element]
+			if subhandler != nil {
+				req.URL.Path = subpath
+				subhandler.ServeHTTP(resp, req)
+				return
+			}
+		}
+
 		for _, w := range r.Wildcard {
 			if err := req.ParseForm(); err != nil {
 				tools.ServeError(resp, err)
@@ -87,20 +101,6 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 			req.Form.Set(w.Name, element)
 			w.Handler.ServeHTTP(resp, req)
 			return
-		}
-
-		if r.Paths != nil {
-			element, subpath := path, "/"
-			if i := strings.IndexByte(path, '/'); i != -1 {
-				element, subpath = path[:i], path[i:]
-			}
-
-			subhandler := r.Paths[element]
-			if subhandler != nil {
-				req.URL.Path = subpath
-				subhandler.ServeHTTP(resp, req)
-				return
-			}
 		}
 	}
 
