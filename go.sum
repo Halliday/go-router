@@ -1,6 +1,12 @@
 github.com/halliday/go-errors v0.0.0-20220713083132-31a287bba49c h1:a+1qWRKc/BKdTdT5T9fT7ooyKRudK5pDk4Pw/2IVXPc=
 github.com/halliday/go-errors v0.0.0-20220713083132-31a287bba49c/go.mod h1:Y4T0LILKpT2p/mWVIFvbLR06QEiv3KA2yfVtOMyTCNc=
+github.com/halliday/go-errors v0.0.0-20221117114904-701c88d594be h1:Vn15TOIXFsGo5gnAOfEQnvcT6JlBNntSoim0HVgBRsM=
+github.com/halliday/go-errors v0.0.0-20221117114904-701c88d594be/go.mod h1:Y4T0LILKpT2p/mWVIFvbLR06QEiv3KA2yfVtOMyTCNc=
 github.com/halliday/go-module v0.0.0-20220713091551-ff63f67e31dc h1:LBSbNdtcLCbUL4cPhxqyONm8iGa5Ji5AWzXoWyQAv/8=
 github.com/halliday/go-module v0.0.0-20220713091551-ff63f67e31dc/go.mod h1:clQWf+zSfJyn8XB/JSQ9q07SHb7Yrt5P3OO/5VI3Fxk=
+github.com/halliday/go-module v0.0.0-20221117115031-b50f77a189df h1:+O+l/gFjj9ceIgnmt1iefM8Xe/iTKydQZgkTKmtTPp0=
+github.com/halliday/go-module v0.0.0-20221117115031-b50f77a189df/go.mod h1:3FEQ+ZDemk21FYjFLIXVczWgcsFnh+25mN5CvbtImaA=
 github.com/halliday/go-tools v0.0.0-20220713091444-ab87f65f61a8 h1:EBikEaGCFkEpHPWyih0fjTM6CG9MtIR/Gp9lT4QB1+4=
 github.com/halliday/go-tools v0.0.0-20220713091444-ab87f65f61a8/go.mod h1:7HUWMK5H2sZyiVyV1iGIVodReuCGUvZJxm5m4jnDWBk=
+github.com/halliday/go-tools v0.0.0-20230601075640-f33fafb9787a h1:FECA8/P+Uv4f3FhVL5XakN2BARrplHjoIKh/qbehc/0=
+github.com/halliday/go-tools v0.0.0-20230601075640-f33fafb9787a/go.mod h1:wYFjct2MT8Toy+5WsznTak4EaIlsqlMG6ijBOSWU5mE=

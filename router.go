@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/halliday/go-module"
-	"github.com/halliday/go-tools"
+	"github.com/halliday/go-tools/httptools"
 )
 
 //go:embed messages.csv
@@ -76,7 +76,7 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 
 		for _, w := range r.Wildcard {
 			if err := req.ParseForm(); err != nil {
-				tools.ServeError(resp, err)
+				httptools.ServeError(resp, req, err)
 				return
 			}
 			if w.RegExp != nil {
@@ -110,9 +110,9 @@ func (r *Route) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	}
 
 	if path == "" && len(r.Methods) != 0 {
-		tools.ServeError(resp, e("method_not_allowed"))
+		httptools.ServeError(resp, req, e("method_not_allowed"))
 		return
 	}
 
-	tools.ServeError(resp, e("not_found"))
+	httptools.ServeError(resp, req, e("not_found"))
 }

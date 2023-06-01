@@ -3,8 +3,8 @@ module github.com/halliday/go-router
 go 1.18
 
 require (
-	github.com/halliday/go-module v0.0.0-20220713091551-ff63f67e31dc
-	github.com/halliday/go-tools v0.0.0-20220713091444-ab87f65f61a8
+	github.com/halliday/go-module v0.0.0-20221117115031-b50f77a189df
+	github.com/halliday/go-tools v0.0.0-20230601075640-f33fafb9787a
 )
 
-require github.com/halliday/go-errors v0.0.0-20220713083132-31a287bba49c // indirect
+require github.com/halliday/go-errors v0.0.0-20221117114904-701c88d594be // indirect
